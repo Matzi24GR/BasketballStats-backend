@@ -1,12 +1,12 @@
 <?php
-define('DB_SERVER', 'db');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', 'password');
-define('DB_NAME', 'esakeDB');
+define('DB_HOST', $_ENV["DB_HOST"]);
+define('DB_NAME', $_ENV["DB_NAME"]);
+define('DB_USERNAME', $_ENV["DB_USERNAME"]);
+define('DB_PASSWORD', $_ENV["DB_PASSWORD"]);
  
 /* Attempt to connect to MySQL database */
 try{
-    $pdo = new PDO("mysql:host=".DB_SERVER, DB_USERNAME, DB_PASSWORD);
+    $pdo = new PDO("mysql:host=".DB_HOST, DB_USERNAME, DB_PASSWORD);
     // Set the PDO error mode to exception
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

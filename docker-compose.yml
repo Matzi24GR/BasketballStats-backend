@@ -3,7 +3,12 @@
  services:
     php:
         build: .
-        container_name: php
+        container_name: esake_backend
+        environment:
+            - DB_HOST=db
+            - DB_NAME=esakeDB
+            - DB_USERNAME=root
+            - DB_PASSWORD=changethispassword
         ports:
             - '80:80'
         depends_on:
@@ -12,8 +17,8 @@
 
     db:
         image: mariadb
-        container_name: db
+        container_name: esake_db
         restart: always
         environment:
-            MARIADB_ROOT_PASSWORD: 'password'
+            MARIADB_ROOT_PASSWORD: 'changethispassword'
 
