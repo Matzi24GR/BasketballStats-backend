@@ -1,0 +1,19 @@
+ version: "3"
+
+ services:
+    php:
+        build: .
+        container_name: php
+        ports:
+            - '80:80'
+        depends_on:
+            - db
+
+
+    db:
+        image: mariadb
+        container_name: db
+        restart: always
+        environment:
+            MARIADB_ROOT_PASSWORD: 'password'
+
