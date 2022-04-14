@@ -5,5 +5,5 @@ ENV DB_USERNAME='root'
 ENV DB_PASSWORD=''
 WORKDIR /var/www/html
 COPY ./php/ /var/www/html
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN docker-php-ext-install mysqli pdo pdo_mysql && a2enmod rewrite
 EXPOSE 80
