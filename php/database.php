@@ -47,8 +47,57 @@ try{
         }
     }
 
+    createSchema($pdo);
 
 } catch(PDOException $e){
     die("ERROR: Could not connect. " . $e->getMessage());
 }
+
+function createSchema($pdo) {
+    $sql = "CREATE TABLE IF NOT EXISTS teams (
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        teamName VARCHAR(255) NOT NULL,
+        city VARCHAR(255),
+        emblemUrl VARCHAR(255)
+      );
+      
+      CREATE TABLE IF NOT EXISTS championships (
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        winningTeamId INT,
+        cname VARCHAR(255),
+        FOREIGN KEY (winningTeamId) REFERENCES teams(id)
+      );
+      
+      CREATE TABLE IF NOT EXISTS players (
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        teamId INT,
+        pname VARCHAR(255) NOT NULL,
+        prole VARCHAR(255),
+        photoUrl VARCHAR(255),
+        FOREIGN KEY (teamId) REFERENCES teams(id)
+      );
+      
+      CREATE TABLE IF NOT EXISTS events (
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        playerId INT,
+        etype VARCHAR(255),
+        etime INT,
+        FOREIGN KEY (playerId) REFERENCES players(id)
+      );
+      
+      CREATE TABLE IF NOT EXISTS games (
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        teamA INT,
+        teamB INT,
+        timeStart INT,
+        timeEnd INT,
+        champID INT,
+        FOREIGN KEY (teamA) REFERENCES teams(id),
+        FOREIGN KEY (teamB) REFERENCES teams(id),
+        FOREIGN KEY (champId) REFERENCES championships(id)
+      );
+      ";
+    $pdo->query($sql);
+}
+
 ?>

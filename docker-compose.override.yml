@@ -1,0 +1,17 @@
+ version: "3"
+
+ services:
+
+    php:
+        volumes:
+            - "./php/:/var/www/html"
+
+    
+    phpmyadmin:
+        container_name: esake_phpmyadmin
+        image: phpmyadmin
+        environment:
+            - PMA_USER=root
+            - PMA_PASSWORD=changethispassword
+        ports:
+        - 81:80
