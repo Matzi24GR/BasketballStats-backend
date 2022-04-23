@@ -1,0 +1,44 @@
+openapi: 3.1.0
+info:
+  title: esakeMockApi
+  description: This api is to be used by mobile apps to supply and read basketball game information for the esake organisation
+  version: 0.1.0
+servers:
+  - url: http://{host}/api
+    variables:
+      host:
+        default: localhost
+        description: The domain or ip adress of the server
+components:
+  parameters:
+    idParam:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+paths:
+  /teams:
+    get:
+      summary: Get the list of teams
+      description: Retrieves all of the known teams
+      responses:
+        200:
+          description: Everything went fine.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    teamName:
+                      type: string
+                    teamEmblemUrl:
+                      type: string
+  /teams/{id}:
+    get:
+      parameters:
+        - $ref: "#/components/parameters/idParam"
+
+
