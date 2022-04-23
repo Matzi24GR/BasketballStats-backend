@@ -5,13 +5,12 @@
     php:
         volumes:
             - "./php/:/var/www/html"
-
-    
-    phpmyadmin:
-        container_name: esake_phpmyadmin
-        image: phpmyadmin
-        environment:
-            - PMA_USER=root
-            - PMA_PASSWORD=changethispassword
+    db:
         ports:
-        - 81:80
+            - "3306:3306"
+
+    adminer:
+        image: adminer
+        container_name: esake_adminer
+        ports:
+        - "81:8080"
