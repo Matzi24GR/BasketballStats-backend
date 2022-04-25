@@ -4,7 +4,7 @@ info:
   description: This api is to be used by mobile apps to supply and read basketball game information for the esake organisation
   version: 0.1.0
 servers:
-  - url: http://{host}/api
+  - url: 'http://{host}/api'
     variables:
       host:
         default: localhost
@@ -23,7 +23,7 @@ paths:
       summary: Get the list of teams
       description: Retrieves all of the known teams
       responses:
-        200:
+        '200':
           description: Everything went fine.
           content:
             application/json:
@@ -38,13 +38,13 @@ paths:
                       type: string
                     teamEmblemUrl:
                       type: string
-  /teams/{id}:
+  '/teams/{id}':
     get:
       parameters:
-        - $ref: "#/components/parameters/idParam"
+        - $ref: '#/components/parameters/idParam'
       responses:
-        200:
-          description: "Request Successful"
+        '200':
+          description: Request Successful
           content:
             application/json:
               schema:
@@ -63,14 +63,14 @@ paths:
                           type: string
                         photoUrl:
                           type: string
-  /players/{id}:
+  '/players/{id}':
     summary: Get player details
     get:
       parameters:
-        - $ref: "#/components/parameters/idParam"
+        - $ref: '#/components/parameters/idParam'
       responses:
-        200:
-          description: "Request Successful"
+        '200':
+          description: Request Successful
           content:
             application/json:
               schema:
@@ -80,17 +80,55 @@ paths:
                     type: string
                   teamId:
                     type: integer
-                  role: 
+                  role:
                     type: string
                   photoUrl:
                     type: string
-                  
-            
-
-
-
-
-
-
-
-
+  /games/:
+    get:
+      summary: Get a list of games
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    teamA:
+                      type: string
+                    teamAscore:
+                      type: integer
+                    teamB:
+                      type: string
+                    teamBscore:
+                      type: integer
+                    timeStart:
+                      type: integer
+                    timeEnd:
+                      type: integer
+              examples:
+                example:
+                  value:
+                    - id: 43
+                      teamA: Olympiakos
+                      teamAscore: 10
+                      teamB: PAOK
+                      teamBscore: 10
+                      timeStart: 1650896534
+                      timeEnd: 0
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: team
+          description: Filter by team
+        - schema:
+            type: boolean
+          in: query
+          name: finished
+          description: Return only finished games
