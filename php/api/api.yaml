@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.0.0
 info:
   title: esakeMockApi
   description: This api is to be used by mobile apps to supply and read basketball game information for the esake organisation
@@ -8,7 +8,7 @@ servers:
     variables:
       host:
         default: localhost
-        description: The domain or ip adress of the server
+        description: The domain or ip address of the server
 components:
   parameters:
     idParam:
@@ -32,6 +32,8 @@ paths:
                 items:
                   type: object
                   properties:
+                    teamId:
+                      type: integer
                     teamName:
                       type: string
                     teamEmblemUrl:
@@ -40,5 +42,55 @@ paths:
     get:
       parameters:
         - $ref: "#/components/parameters/idParam"
+      responses:
+        200:
+          description: "Request Successful"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  players:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        role:
+                          type: string
+                        photoUrl:
+                          type: string
+  /players/{id}:
+    summary: Get player details
+    get:
+      parameters:
+        - $ref: "#/components/parameters/idParam"
+      responses:
+        200:
+          description: "Request Successful"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  playerName:
+                    type: string
+                  teamId:
+                    type: integer
+                  role: 
+                    type: string
+                  photoUrl:
+                    type: string
+                  
+            
+
+
+
+
+
+
 
 
