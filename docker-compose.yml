@@ -9,6 +9,8 @@
             - DB_NAME=esakeDB
             - DB_USERNAME=root
             - DB_PASSWORD=changethispassword
+        volumes:
+            - "./resources:/var/www/html/resources"
         ports:
             - '80:80'
         depends_on:
@@ -20,7 +22,7 @@
         container_name: esake_db
         restart: always
         volumes:
-            -   "./db:/var/lib/mysql"
+            - "./db:/var/lib/mysql"
         environment:
             MARIADB_ROOT_PASSWORD: 'changethispassword'
 

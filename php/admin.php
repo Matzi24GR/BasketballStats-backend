@@ -58,6 +58,10 @@
         echo "<span class='error'> Table does not exist </span>";
     }
     ?>
+    <hr>
+    <form action="./teams.php">
+      <button>Teams</button>
+    </form>
   </div>
   </body>
 </html>
