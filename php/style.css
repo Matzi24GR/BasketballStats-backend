@@ -7,6 +7,46 @@ h2 {
     border-top-right-radius: 10px;
     background-color: #2a56e3;
     color: white;
+    margin: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+label {
+    font-weight: bold;
+    align-self: flex-start;
+}
+
+input[type=text],
+input[type=password] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 12px;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #2a56e3;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+  }
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 5%;
+    margin-right: 5%;
+    align-items: stretch;
+    align-content: stretch;
+    gap: 20px;
+    flex-direction: row;
 }
 
 .card {
@@ -20,6 +60,17 @@ h2 {
     margin: auto;
 }
 
+.card2 {
+    background-color: #F0F0F0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: auto;
+    height: 100%;
+    text-align: center;
+    font-family: arial;
+    border-radius: 10px;
+    margin: auto;
+}
+
 hr {
     margin-left: 40px;
     margin-right: 40px;
@@ -27,6 +78,10 @@ hr {
 
 .error {
     color: red;
+}
+
+.warning {
+    color: rgb(241, 237, 0);
 }
 
 table {

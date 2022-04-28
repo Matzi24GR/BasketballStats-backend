@@ -90,34 +90,46 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div>
-        <h2>Login</h2>
-        <p>Please fill in your credentials to login.</p>
-
-        <?php 
-        if(!empty($login_err)){
-            echo '<div>' . $login_err . '</div>';
-        }        
-        ?>
-
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div>
-                <label>Username</label>
-                <input type="text" name="username" value="<?php echo $username; ?>">
-                <span><?php echo $username_err; ?></span>
-            </div>    
-            <div>
-                <label>Password</label>
-                <input type="password" name="password">
-                <span><?php echo $password_err; ?></span>
-            </div>
-            <div>
-                <input type="submit" value="Login">
-            </div>
-            <!-- <p>Don't have an account? <a href="register.php">Sign up now</a>.</p> -->
-        </form>
+    <div class="card" style="background-color:darkorange;">
+        <h1>Mock Website. Not related to <a href="https://www.esake.gr">esake.gr</a></h1>
+    </div>
+    <div class="container">
+        <div class="card2" style="flex-grow: 1;">
+            <h2>Information</h2>
+            <p>This website was created as part of an assignment</p>
+            <p>Android Development course at University of Macedonia 2022</p>
+            <h3>Links</h3>
+            <li><a href="https://github.com/UoM2022AndroidDevTeam11/BasketballStats-backend">Github</a></li>
+            <li><a href="https://uom2022team11.stoplight.io/docs/basketballstats-backend/YXBpOjU1MDgzMDg3-esake-mock-api">Api Documentation</a></li>
+            <h3> Made by Team 11</h3>
+        </div>
+        <div class="card2">
+            <h2>Administrator Panel Login</h2>
+            <?php 
+            if(!empty($login_err)){
+                echo '<div>' . $login_err . '</div>';
+            }        
+            ?>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <div>
+                    <label>Username</label><br>
+                    <input type="text" name="username" value="<?php echo $username; ?>">
+                    <span class="error"><br><?php echo $username_err; ?></span>
+                </div>    
+                <div>
+                    <label>Password</label><br>
+                    <input type="password" name="password">
+                    <span class="error"><br><?php echo $password_err; ?></span>
+                </div>
+                <div>
+                    <input type="submit" value="Login">
+                </div>
+                <!-- <p>Don't have an account? <a href="register.php">Sign up now</a>.</p> -->
+            </form>
+        </div>
     </div>
 </body>
 </html>

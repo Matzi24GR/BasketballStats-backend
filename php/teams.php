@@ -60,7 +60,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Welcome</title>
+    <title>Teams</title>
+    <link rel="stylesheet" href="style.css">
 </head>
   <body>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
