@@ -96,7 +96,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <div class="card" style="background-color:darkorange;">
         <h1>Mock Website. Not related to <a href="https://www.esake.gr">esake.gr</a></h1>
     </div>
-    <div class="container">
+    <div class="container" style="flex-wrap: wrap-reverse;">
         <div class="card2" style="flex-grow: 1;">
             <h2>Information</h2>
             <p>This website was created as part of an assignment</p>
