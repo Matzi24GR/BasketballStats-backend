@@ -64,6 +64,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
   <body>
+  <h2 style="border-radius: 12px;" class="header">Teams Dashboard <a style="color:lavender;" href="admin.php">Go Back</a></h2>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
       name: <input type="text" name="name" value="<?php echo $name;?>"> <span class="error">* <?php echo $nameErr;?></span><br>
       city: <input type="text" name="city" value="<?php echo $city;?>"><span class="error">* <?php echo $cityErr;?></span><br>

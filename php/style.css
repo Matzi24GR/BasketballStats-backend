@@ -27,7 +27,7 @@ input[type=password] {
     border-radius: 12px;
 }
 
-input[type=button], input[type=submit], input[type=reset] {
+input[type=button], input[type=submit], input[type=reset], button {
     background-color: #2a56e3;
     border: none;
     color: white;
@@ -47,6 +47,15 @@ input[type=button], input[type=submit], input[type=reset] {
     align-content: stretch;
     gap: 20px;
     flex-direction: row;
+    justify-content: flex-start;
+}
+
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .card {
@@ -64,11 +73,10 @@ input[type=button], input[type=submit], input[type=reset] {
     background-color: #F0F0F0;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     width: auto;
-    height: 100%;
+    height: auto;
     text-align: center;
     font-family: arial;
     border-radius: 10px;
-    margin: auto;
 }
 
 hr {
