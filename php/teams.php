@@ -61,7 +61,7 @@
       insertTeam($pdo, "ΠΑΝΑΘΗΝΑΪΚΟΣ ΟΠΑΠ", "Αθήνα", "/resources/images/teams/panathinaikos_opap.png");
       insertTeam($pdo, "ΠΑΟΚ mateco", "Θεσσαλονίκη", "/resources/images/teams/paok_mateco.png");
       insertTeam($pdo, "ΠΕΡΙΣΤΕΡΙ VITABIOTICS", "Αθήνα", "/resources/images/teams/peristeri_vitabiotics.png");
-      insertTeam($pdo, "ΠΡΟΜΗΘΕΑΣ", " Πάτρας", "/resources/images/teams/promitheas.png");
+      insertTeam($pdo, "ΠΡΟΜΗΘΕΑΣ", "Πάτρα", "/resources/images/teams/promitheas.png");
     }
 
   }
@@ -100,6 +100,7 @@
             <th>Name</th>
             <th>City</th>
             <th>EmblemUrl</th>
+            <th>Emblem</th>
           </tr>
           <?php
               try {
@@ -111,10 +112,11 @@
                   if ($data) {
                     foreach ($data as $entry) {
                       echo "<tr>";
-                      echo "<td>".$entry['id']."</td>";
-                      echo "<td>".$entry['teamName']."</td>";
-                      echo "<td>".$entry['city']."</td>";
-                      echo "<td><a href=".$entry['emblemUrl'].">".$entry['emblemUrl']."</a></td>";
+                      echo "<td>{$entry['id']}</td>";
+                      echo "<td><h3>{$entry['teamName']}</h3></td>";
+                      echo "<td>{$entry['city']}</td>";
+                      echo "<td><a href={$entry['emblemUrl']}>{$entry['emblemUrl']}</a></td>";
+                      echo "<td><img src={$entry['emblemUrl']} width='100' ></td>";
                       echo "</tr>";
                     }
                   }
