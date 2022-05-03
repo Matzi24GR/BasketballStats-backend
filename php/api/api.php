@@ -11,4 +11,10 @@ if (isset($uri[2]) && $uri[2] == 'users') {
   exit();
 }
 
+if (isset($uri[2]) && $uri[2] == 'teams') {
+    $test = $pdo->query('SELECT id as teamId, teamName, emblemUrl as teamEmblemUrl FROM teams')->fetchAll(PDO::FETCH_ASSOC);
+    echo json_encode($test);
+    exit();
+}
+
 ?>
