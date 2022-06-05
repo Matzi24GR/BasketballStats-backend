@@ -146,4 +146,16 @@ if (isset($uri[2]) && $uri[2] == 'register') {
     }
 }
 
+if (isset($uri[2]) && $uri[2] == 'games') {
+$stmt = 'Select g.id, g.timeStart, g.timeEnd,
+         t1.teamName as teamA, t1.emblemUrl as teamAurl,
+         t2.teamName as teamB, t2.emblemUrl as teamBurl 
+        FROM games as g 
+        LEFT JOIN teams as t1 ON g.teamA=t1.id 
+        LEFT JOIN teams as t2 ON g.teamB=t2.id';
+    $test = $pdo->query($stmt)->fetchAll(PDO::FETCH_ASSOC);
+    echo json_encode($test);
+    exit();
+}
+
 ?>
