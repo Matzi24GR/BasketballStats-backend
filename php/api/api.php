@@ -6,14 +6,16 @@ $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = explode( '/', $uri );
 
 if (isset($uri[2]) && $uri[2] == 'users') {
-  $test = $pdo->query('SELECT * FROM users')->fetchAll(PDO::FETCH_ASSOC);
-  echo json_encode($test);
-  exit();
+    $output = $pdo->query('SELECT * FROM users')->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-type: application/json');
+    echo json_encode(['users'=>$output]);
+    exit();
 }
 
 if (isset($uri[2]) && $uri[2] == 'teams') {
-    $test = $pdo->query('SELECT id as teamId, teamName, emblemUrl as teamEmblemUrl FROM teams')->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode($test);
+    $output = $pdo->query('SELECT id as teamId, teamName, emblemUrl as teamEmblemUrl FROM teams')->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-type: application/json');
+    echo json_encode(['teams'=>$output]);
     exit();
 }
 
@@ -153,8 +155,9 @@ $stmt = 'Select g.id, g.timeStart, g.timeEnd,
         FROM games as g 
         LEFT JOIN teams as t1 ON g.teamA=t1.id 
         LEFT JOIN teams as t2 ON g.teamB=t2.id';
-    $test = $pdo->query($stmt)->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode($test);
+    $output = $pdo->query($stmt)->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-type: application/json');
+    echo json_encode(['games'=>$output]);
     exit();
 }
 
