@@ -65,7 +65,7 @@ function insertGame($pdo, $teamA, $teamB, $startDate) {
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Teams</title>
+    <title>Games</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
