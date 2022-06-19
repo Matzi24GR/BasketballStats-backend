@@ -161,7 +161,7 @@ if (isset($uri[2]) && $uri[2] == 'games' && !isset($uri[3])) {
     exit();
 }
 
-if (isset($uri[2]) && $uri[2] == 'games' && isset($uri[3])) {
+if (isset($uri[2]) && $uri[2] == 'games' && isset($uri[3]) && isset($uri[4]) && $uri[4] == 'players') {
     $gameID = $uri[3];
 
     $stmtA = 'Select p.id, p.pname as name, p.prole as role, p.photoUrl
@@ -181,6 +181,48 @@ if (isset($uri[2]) && $uri[2] == 'games' && isset($uri[3])) {
     header('Content-type: application/json');
     echo json_encode(['teamAPlayers'=>$teamA]+['teamBPlayers'=>$teamB]);
     exit();
+}
+
+if (isset($uri[2]) && $uri[2] == 'games' && isset($uri[3]) && isset($uri[4]) && $uri[4] == 'events') {
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+        $gameId = trim($uri[3]);
+        $playerId = trim($_POST["playerId"]);
+        $type = trim($_POST["type"]);
+        $time = trim($_POST["time"]);
+
+        if (empty($gameId) || empty($playerId) || empty($type) || empty($time)) {
+            echo "FAILED";
+            exit();
+        }
+
+        $sql = "INSERT INTO events (playerId, gameId, etype, etime) VALUES (:playerId, :gameId, :etype, :etime)";
+
+        if($stmt = $pdo->prepare($sql)){
+            // Bind variables to the prepared statement as parameters
+            $stmt->bindParam(":playerId", $playerId, PDO::PARAM_STR);
+            $stmt->bindParam(":gameId", $gameId, PDO::PARAM_STR);
+            $stmt->bindParam(":etype", $type, PDO::PARAM_STR);
+            $stmt->bindParam(":etime", $time, PDO::PARAM_STR);
+
+            // Attempt to execute the prepared statement
+            if($stmt->execute()){
+                echo "SUCCESS";
+                exit();
+            } else{
+                echo "FAILED";
+                exit();
+            }
+
+            // Close statement
+            unset($stmt);
+        }
+
+        // Close connection
+        unset($pdo);
+    } else {
+        echo "NOT POST REQUEST";
+    }
 }
 
 ?>
