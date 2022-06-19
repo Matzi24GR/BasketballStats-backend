@@ -77,7 +77,7 @@ function insertPlayer($pdo, $name, $photo, $teamId, $role) {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h2 style="border-radius: 12px;" class="header">Teams Dashboard <a style="color:lavender;" href="admin.php">Go Back</a></h2>
+<h2 style="border-radius: 12px;" class="header">Players Dashboard <a style="color:lavender;" href="admin.php">Go Back</a></h2>
 <div class="container" style="flex-wrap: wrap-reverse; align-items:flex-end">
 
     <div class="card2">

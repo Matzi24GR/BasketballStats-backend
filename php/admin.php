@@ -126,8 +126,9 @@
         }
         ?>
         <hr>
-        <form action="./championships.php">
-          <button>Manage</button>
+<!--    <form action="./championships.php">-->
+        <form>
+          <button>Manage (TODO)</button>
         </form>
       </div>
     </div>

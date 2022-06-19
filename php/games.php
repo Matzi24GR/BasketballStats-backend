@@ -69,7 +69,7 @@ function insertGame($pdo, $teamA, $teamB, $startDate) {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h2 style="border-radius: 12px;" class="header">Teams Dashboard <a style="color:lavender;" href="admin.php">Go Back</a></h2>
+<h2 style="border-radius: 12px;" class="header">Games Dashboard <a style="color:lavender;" href="admin.php">Go Back</a></h2>
 <div class="container" style="flex-wrap: wrap-reverse; align-items:flex-end">
 
     <div class="card2">
@@ -174,7 +174,6 @@ function insertGame($pdo, $teamA, $teamB, $startDate) {
 
     <div class="card2">
         <form method="post">
-            <br>
             <input type="submit" name="deleteButton" value="!! Delete all !!">
         </form>
     </div>
