@@ -148,8 +148,8 @@ if (isset($uri[2]) && $uri[2] == 'register') {
     }
 }
 
-if (isset($uri[2]) && $uri[2] == 'games') {
-$stmt = 'Select g.id, g.timeStart, g.timeEnd,
+if (isset($uri[2]) && $uri[2] == 'games' && !isset($uri[3])) {
+    $stmt = 'Select g.id, g.timeStart, g.timeEnd,
          t1.teamName as teamA, t1.emblemUrl as teamAurl,
          t2.teamName as teamB, t2.emblemUrl as teamBurl 
         FROM games as g 
@@ -158,6 +158,28 @@ $stmt = 'Select g.id, g.timeStart, g.timeEnd,
     $output = $pdo->query($stmt)->fetchAll(PDO::FETCH_ASSOC);
     header('Content-type: application/json');
     echo json_encode(['games'=>$output]);
+    exit();
+}
+
+if (isset($uri[2]) && $uri[2] == 'games' && isset($uri[3])) {
+    $gameID = $uri[3];
+
+    $stmtA = 'Select p.id, p.pname as name, p.prole as role, p.photoUrl
+                FROM games as g
+                LEFT JOIN teams as t ON g.teamA=t.id
+                RIGHT JOIN players as p ON t.id=p.teamId
+                WHERE g.id='."$gameID";
+    $teamA = $pdo->query($stmtA)->fetchAll(PDO::FETCH_ASSOC);
+
+    $stmtB = 'Select p.id, p.pname as name, p.prole as role, p.photoUrl
+                FROM games as g
+                LEFT JOIN teams as t ON g.teamB=t.id
+                RIGHT JOIN players as p ON t.id=p.teamId
+                WHERE g.id='."$gameID";
+    $teamB = $pdo->query($stmtB)->fetchAll(PDO::FETCH_ASSOC);
+
+    header('Content-type: application/json');
+    echo json_encode(['teamAPlayers'=>$teamA]+['teamBPlayers'=>$teamB]);
     exit();
 }
 
