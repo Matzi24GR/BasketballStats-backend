@@ -80,9 +80,11 @@ function createSchema($pdo) {
       CREATE TABLE IF NOT EXISTS events (
         id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
         playerId INT,
+        gameId INT,
         etype VARCHAR(255),
         etime INT,
-        FOREIGN KEY (playerId) REFERENCES players(id)
+        FOREIGN KEY (playerId) REFERENCES players(id),
+        FOREIGN KEY (gameId) REFERENCES games(id)
       );
       
       CREATE TABLE IF NOT EXISTS games (
