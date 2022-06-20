@@ -77,16 +77,6 @@ function createSchema($pdo) {
         FOREIGN KEY (teamId) REFERENCES teams(id)
       );
       
-      CREATE TABLE IF NOT EXISTS events (
-        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-        playerId INT,
-        gameId INT,
-        etype VARCHAR(255),
-        etime INT,
-        FOREIGN KEY (playerId) REFERENCES players(id),
-        FOREIGN KEY (gameId) REFERENCES games(id)
-      );
-      
       CREATE TABLE IF NOT EXISTS games (
         id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
         teamA INT,
@@ -97,6 +87,16 @@ function createSchema($pdo) {
         FOREIGN KEY (teamA) REFERENCES teams(id),
         FOREIGN KEY (teamB) REFERENCES teams(id),
         FOREIGN KEY (champId) REFERENCES championships(id)
+      );
+
+      CREATE TABLE IF NOT EXISTS events (
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        playerId INT,
+        gameId INT,
+        etype VARCHAR(255),
+        etime INT,
+        FOREIGN KEY (playerId) REFERENCES players(id),
+        FOREIGN KEY (gameId) REFERENCES games(id)
       );
       ";
     $pdo->query($sql);
