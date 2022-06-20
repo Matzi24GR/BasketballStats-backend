@@ -62,7 +62,7 @@ function test_input($data) {
                 $sql = 'Select e.*, p.pname
                             FROM events as e 
                             JOIN players as p ON e.playerId=p.id
-                            WHERE gameId='."$gameId";
+                            WHERE gameId='."$gameId".' ORDER BY e.etime DESC';
 
                 $data = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
