@@ -69,13 +69,14 @@ function test_input($data) {
 
                 if ($data) {
                     foreach ($data as $entry) {
+                        $time = date('Y-m-d H:i:s', $entry['etime'] );
                         echo "<tr>";
                         echo "<td>{$entry['id']}</td>";
                         echo "<td>{$entry['playerId']}</td>";
                         echo "<td>{$entry['pname']}</td>";
                         echo "<td>{$entry['gameId']}</td>";
                         echo "<td>{$entry['etype']}</td>";
-                        echo "<td>{$entry['etime']}</td>";
+                        echo "<td>{$time}</td>";
                         echo "</tr>";
                     }
                 }
